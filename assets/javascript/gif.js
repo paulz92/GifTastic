@@ -40,7 +40,7 @@ $(document).ready(function() {
 		},
 		// method to display gifs
 		displayGifs: function() {
-			// clears prior gif each time a new button is clicked
+			// clears prior gifs each time a new button is clicked
 			$("#emotion-gifs").empty();
 			// beta api key from giphy
 			var apiKey = "005nfNXY5tfl1ZFiBX7GH8Hzg9aWf6sQ";
@@ -68,26 +68,50 @@ $(document).ready(function() {
       	for (var i = 0; i < results.length; i++) {
       		// creating div for info to go into
       		var gifDiv = $("<div>");
-      		// adding gif class for css styling/click feature
-      		gifDiv
-      			.addClass("gif");
+      		// adding gifDiv class for css styling/click feature
+      		gifDiv.addClass("gifDiv");
       		// creating <p> for the rating info	
       		var p = $("<p>").text("Rating: " + results[i].rating);
       		// creating image tag for the gif
       		var gif = $("<img>");
-      		// giving image tag source with gif url at i
-      		gif.attr("src", results[i].images.fixed_height.url);
+      		// giving image tag source with still gif url at i
+      		gif.attr("src", 
+      			results[i].images.fixed_height_still.url);
+      		// giving image attr data-still equal to still url
+      		gif.attr("data-still", 
+      			results[i].images.fixed_height_still.url);
+      		// giving image attr data-animate equal to animate url
+      		gif.attr("data-animate", 
+      			results[i].images.fixed_height.url);
+      		// giving image a beginning data state of still
+      		gif.attr("data-state", "still");       		
+      		// giving image a class called gif
+      		gif.addClass("gif");     		
       		// appending the p and image to the gifDiv
       		gifDiv.append(p);
       		gifDiv.append(gif);
-      		// prepending the giv div to the emotion gifs row/div
-      		$("#emotion-gifs").prepend(gifDiv);
+      		// appending the giv div to the emotion gifs row/div
+      		$("#emotion-gifs").append(gifDiv);
       	}
       });
 		},
 		// method to animate gifs
 		animateGifs: function() {
-			console.log("placehold");
+			// creating a state var equal to data state of clicked gif
+			var state = $(this).attr("data-state");
+			// if state is still
+			if (state === "still") {
+				// change source to data animate url
+				$(this).attr("src", $(this).attr("data-animate"));
+				// change data state to animate
+				$(this).attr("data-state", "animate");
+				// if state is animate
+			} else {
+				// change source to data still url
+				$(this).attr("src", $(this).attr("data-still"));
+				// change data state to still
+				$(this).attr("data-state", "still");
+			}
 		}
 	// close object
 	};
@@ -102,11 +126,11 @@ $(document).ready(function() {
 		gifGenerator.addEmotions();
 	});
 
-// click event listener to all elements with "emotion" class
-// will run the diplay Gifs method
- $(document).on("click", ".emotion", gifGenerator.displayGifs);
+	// click event listener to all elements with emotion class
+	// will run the diplay Gifs method
+ 	$(document).on("click", ".emotion", gifGenerator.displayGifs);
 
-	// click event listener to all elements with "gif" class
+	// click event listener to all elements with gif class
 	// will run the animate Gifs method
 	$(document).on("click", ".gif", gifGenerator.animateGifs);
 

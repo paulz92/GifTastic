@@ -1,9 +1,11 @@
+/* giving buttons a margin for better spacing */
 .btn {
 	margin-bottom: 12px;
 	margin-right: 8px;
 }
 
-.gif {
+/* giving gifDivs margin for spacing and floating left */
+.gifDiv {
 	margin-bottom: 16px;
 	margin-right: 16px;
 	margin-left: 16px;
