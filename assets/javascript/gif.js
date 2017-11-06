@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var gifGenerator = {
 		// starting buttons
 		emotions: ["happy", "sad", "scared", "angry",
-			 "surprised", "confused", "awkward", "drunk", 
+			 "surprised", "confused", "awkward", "annoyed", 
 			 "excited", "bored"],
 		// method for user added buttons
 		addEmotions: function() {

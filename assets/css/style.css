@@ -1,3 +1,8 @@
+/* background image */
+body {
+	background-image: url(../images/background.jpg);
+}
+
 /* giving buttons a margin for better spacing */
 .btn {
 	margin-bottom: 12px;
@@ -10,4 +15,28 @@
 	margin-right: 16px;
 	margin-left: 16px;
 	float: left;
+}
+
+/* better spacing */
+#header {
+	margin-top: 30px;
+	padding: 24px 60px 24px 60px;
+}
+
+/* changing size and fonts */
+#header h1 {
+	font-size: 68px;
+	font-family: 'Indie Flower', cursive;
+}
+
+/* color and fonts for all font minus main title*/
+#header h3, p, #header h1, form, button {
+	color: #365164;
+	font-family: 'Gloria Hallelujah', cursive;
+}
+
+/* adding border and changing background color of jumbotron */
+.jumbotron {
+	border: 3px solid #365164;
+	background-color: #f7f0f5;
 }
